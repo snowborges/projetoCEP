@@ -32,15 +32,11 @@ function buscarCEP(event) {
         });
 };  
 
-function acionarBusca(event) {
-    buscarCEP(event);  // função de buscar
-}
-
-document.getElementById("buscar").addEventListener("click", acionarBusca); // função do clickzinho
+document.getElementById("buscar").addEventListener("click", buscarCEP); // função do clickzinho
 
 document.getElementById("cep").addEventListener("keypress", function(event) {
     if (event.key === "Enter") {
-        acionarBusca(event);  // corrigindo o erro maldito do enter
+        buscarCEP(event);  // corrigindo o erro maldito do enter 
     }
 });
 
