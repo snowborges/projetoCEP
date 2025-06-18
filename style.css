@@ -70,6 +70,6 @@ button:hover {
   padding: 10px;
   background-color: #f1f1f1;
   border-radius: 4px;
-  text-align: center;
+  text-align: start;
   color: #333;
 }
