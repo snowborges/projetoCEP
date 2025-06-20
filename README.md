@@ -32,6 +32,17 @@ O **projetoCEP** é um simples aplicativo web desenvolvido com HTML, CSS e JavaS
 🌍 **Integração com ViaCEP**: Consome a API pública do ViaCEP para retornar dados como cidade, estado e logradouro.
 
 🛠️ **Manipulação de Erros**: Exibe mensagens de erro amigáveis caso o CEP não seja encontrado ou a consulta falhe.
+<br>
+<br> <!-- Espaço entre as seções -->
+## 🌐 Acesse o projeto online!
+
+Você também pode testar o projeto diretamente pelo navegador:
+
+<p align="center">
+  <a href="https://projetocep.netlify.app/" target="_blank">
+    <img src="https://img.shields.io/badge/👀 Ver%20Projeto%20Online-00C853?style=for-the-badge&logo=netlify&logoColor=white" alt="Ver Projeto Online">
+  </a>
+</p>
 
 <br> <!-- Espaço entre as seções -->
 ## Começando
