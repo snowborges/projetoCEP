@@ -1,3 +1,5 @@
+const url = `https://viacep.com.br/ws/${cep}/json/`; // URL da API para buscar o CEP
+
 function buscarCEP(event) {
     event.preventDefault(); // Previne o comportamento padrão do formulário ao dar submit
     
@@ -6,8 +8,7 @@ function buscarCEP(event) {
         document.getElementById("resultado").innerHTML = `<p class="error">CEP inválido. O CEP deve ter 8 dígitos.</p>`;
         return;
     }
-    const url = `https://viacep.com.br/ws/${cep}/json/`; // URL da API para buscar o CEP
-
+    
     document.getElementById("resultado").innerHTML = "<p>Carregando...</p>";  // Exibe mensagem de carregamento
 
     fetch(url) // Faz a requisição para a API ViaCEP
