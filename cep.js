@@ -1,5 +1,3 @@
-const url = `https://viacep.com.br/ws/${cep}/json/`; // URL da API para buscar o CEP
-
 function buscarCEP(event) {
     event.preventDefault(); // Previne o comportamento padrão do formulário ao dar submit
     
@@ -9,8 +7,12 @@ function buscarCEP(event) {
         return;
     }
     
+    const url = `https://viacep.com.br/ws/${cep}/json/`; // URL da API para buscar o CEP
+    
     document.getElementById("resultado").innerHTML = "<p>Carregando...</p>";  // Exibe mensagem de carregamento
-
+    
+    
+    
     fetch(url) // Faz a requisição para a API ViaCEP
         .then(response => { // Verifica se a resposta foi bem-sucedida
             if (!response.ok) { // Se a resposta não for ok, lança um erro
@@ -18,8 +20,8 @@ function buscarCEP(event) {
             }
             return response.json(); // Converte a resposta para JSON
         })
-        .then(data => // Processa os dados recebidos
-            document.getElementById("resultado").innerHTML = ` // Exibe os dados do CEP na página
+        .then(data => { // Processa os dados recebidos
+            document.getElementById("resultado").innerHTML = ` 
                 <p><strong>CEP:</strong> ${data.cep}</p>
                 <p><strong>Logradouro:</strong> ${data.logradouro}</p>
                 <p><strong>Bairro:</strong> ${data.bairro}</p>
