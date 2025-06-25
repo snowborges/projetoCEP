@@ -22,12 +22,12 @@ function buscarCEP(event) {
         })
         .then(data => { // Processa os dados recebidos
             document.getElementById("resultado").innerHTML = ` 
-                <p><strong>CEP:</strong> ${data.cep}</p>
-                <p><strong>Logradouro:</strong> ${data.logradouro}</p>
-                <p><strong>Bairro:</strong> ${data.bairro}</p>
-                <p><strong>Cidade:</strong> ${data.localidade}</p>
-                <p><strong>Estado:</strong> ${data.uf}</p>  
-                <p><strong>Região:</strong> ${data.regiao}</p>  
+                <p><strong>CEP:</strong> ${data.cep || "Não informado ou Não Existente"}</p>
+                <p><strong>Logradouro:</strong> ${data.logradouro || "Não informado ou Não Existente"}</p>
+                <p><strong>Bairro:</strong> ${data.bairro || "Não informado ou Não Existente"}</p>
+                <p><strong>Cidade:</strong> ${data.localidade || "Não informado ou Não Existente"}</p>
+                <p><strong>Estado:</strong> ${data.uf || "Não informado eou Não Existente"}</p>  
+                <p><strong>Região:</strong> ${data.regiao || "Não informado ou Não Existente"}</p>  
             `;
         })
         .catch(error => { // Captura erros na requisição ou no processamento dos dados
