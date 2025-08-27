@@ -1,26 +1,26 @@
 function buscarCEP(event) {
-    event.preventDefault(); // Previne o comportamento padrão do formulário ao dar submit
+    event.preventDefault(); 
     
-    const cep = document.getElementById("cep").value.replace("-", "");  // Remove o traço para verificar a quantidade de caracteres
+    const cep = document.getElementById("cep").value.replace("-", "");  
     if (cep.length !== 8) {
         document.getElementById("resultado").innerHTML = `<p class="error">CEP inválido. O CEP deve ter 8 dígitos.</p>`;
         return;
     }
     
-    const url = `https://viacep.com.br/ws/${cep}/json/`; // URL da API para buscar o CEP
+    const url = `https://viacep.com.br/ws/${cep}/json/`; 
     
-    document.getElementById("resultado").innerHTML = "<p>Carregando...</p>";  // Exibe mensagem de carregamento
+    document.getElementById("resultado").innerHTML = "<p>Carregando...</p>";  
     
     
     
-    fetch(url) // Faz a requisição para a API ViaCEP
-        .then(response => { // Verifica se a resposta foi bem-sucedida
-            if (!response.ok) { // Se a resposta não for ok, lança um erro
-                throw new Error("CEP não encontrado"); // Lança um erro se o CEP não for encontrado
+    fetch(url) 
+        .then(response => { 
+            if (!response.ok) { 
+                throw new Error("CEP não encontrado"); 
             }
-            return response.json(); // Converte a resposta para JSON
+            return response.json(); 
         })
-        .then(data => { // Processa os dados recebidos
+        .then(data => { 
             document.getElementById("resultado").innerHTML = ` 
                 <p><strong>CEP:</strong> ${data.cep || "Não informado ou Não Existente"}</p>
                 <p><strong>Logradouro:</strong> ${data.logradouro || "Não informado ou Não Existente"}</p>
@@ -30,30 +30,29 @@ function buscarCEP(event) {
                 <p><strong>Região:</strong> ${data.regiao || "Não informado ou Não Existente"}</p>  
             `;
         })
-        .catch(error => { // Captura erros na requisição ou no processamento dos dados
+        .catch(error => { 
             document.getElementById("resultado").innerHTML = `<p class="error">${error.message}</p>`;
-        }); // Exibe mensagem de erro se algo der errado
+        }); 
 };  
 
-document.getElementById("buscar").addEventListener("click", buscarCEP); // função do clickzinho 
+document.getElementById("buscar").addEventListener("click", buscarCEP); 
 
 document.getElementById("cep").addEventListener("keypress", function(event) {
     if (event.key === "Enter") {
-        buscarCEP(event);  // corrigindo o erro maldito do enter 
+        buscarCEP(event);   
     }
 });
 
 document.getElementById("cep").addEventListener("input", function(event) {
-    let value = event.target.value.replace(/\D/g, ''); // Remove tudo que não é dígito (números)
-    if (value.length > 5) { // Se o valor tiver mais de 5 dígitos, adiciona o traço
-        value = value.slice(0, 5) + '-' + value.slice(5, 8); // Formata como CEP
+    let value = event.target.value.replace(/\D/g, ''); 
+    if (value.length > 5) { 
+        value = value.slice(0, 5) + '-' + value.slice(5, 8); 
     }
-    event.target.value = value; // Atualiza o valor do campo de entrada com a máscara
+    event.target.value = value; 
 });
-// Adiciona máscara (formatação) de CEP ao campo de entrada
 
 function salvarNoHistorico(cep, data) {
     let historico = JSON.parse(localStorage.getItem("historico")) || [];
     historico.push({ cep, data });
     localStorage.setItem("historico", JSON.stringify(historico));
-} // Função para salvar o CEP no localStorage (tenebroso, mas funciona)
+} 
